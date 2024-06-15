@@ -1,27 +1,40 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import "./index.css";
-import App from "./App";
 
+import CourseDetailsPage, {
+  courseDetailLoader,
+} from "./Pages/CourseDetailsPage";
+import CoursesPage, { coursesLoader } from "./Pages/CoursesPage";
+import ErrorPage from "./Pages/ErrorPage";
 import HomePage from "./Pages/HomePage";
-import CoursesPage from "./Pages/CoursesPage";
+import RootLayoutPage from "./Pages/RootLayoutPage";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: "/", // http://localhost:3000
-    element: <HomePage />,
-  },
-  {
-    path: "/courses",
-    element: <CoursesPage />,
+    path: "/",
+    element: <RootLayoutPage />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/", // http://localhost:3000
+        element: <HomePage />,
+      },
+      {
+        path: "/courses",
+        element: <CoursesPage />,
+        loader: coursesLoader,
+      },
+      {
+        path: "/courses/:courseId",
+        element: <CourseDetailsPage />,
+        loader: courseDetailLoader,
+      },
+    ],
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <RouterProvider router={router}>
-    <App />
-  </RouterProvider>
-);
+root.render(<RouterProvider router={router}></RouterProvider>);

@@ -1,0 +1,22 @@
+{
+  "courses": [
+    {
+      "id": "c001",
+      "title": "Awesome React",
+      "duration": 32,
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRksehAPc0bIrzfo6xov_h7IS6UaumuglOOJQ&s"
+    },
+    {
+      "id": "c002",
+      "title": "Beginning NodeJS",
+      "duration": 60,
+      "logo": "https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png"
+    },
+    {
+      "id": "c003",
+      "title": "Angular 101",
+      "duration": 48,
+      "logo": "https://w7.pngwing.com/pngs/752/651/png-transparent-angularjs-vue-js-others-angle-rectangle-triangle-thumbnail.png"
+    }
+  ]
+}

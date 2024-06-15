@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-06-15T09:36:03.631Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" etag="vWwN1h6rI_CBg5RppKyy" version="24.4.15" type="device" pages="6">
+<mxfile host="app.diagrams.net" modified="2024-06-15T10:32:27.558Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" etag="6IxV0Nq8UM5KTtA7gkNF" version="24.4.15" type="device" pages="6">
   <diagram name="Page-1" id="MrwQfm5ZS8Oboqw0PxU7">
     <mxGraphModel dx="899" dy="421" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -355,7 +355,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="pDsVXeUik2eq5KVZ6mho" name="Page-6">
-    <mxGraphModel dx="840" dy="484" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="560" dy="323" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -388,6 +388,12 @@
         </mxCell>
         <mxCell id="yqOddu6ba1bPR6qhNYbh-8" value="Contact Us" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="354" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yqOddu6ba1bPR6qhNYbh-9" value="Hashbang Mode -&amp;gt; http://www.example.com/#/index" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="100" y="418" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yqOddu6ba1bPR6qhNYbh-10" value="HTML5 Mode (default) -&amp;gt; http://www.example.com/index" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="94" y="448" width="320" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
