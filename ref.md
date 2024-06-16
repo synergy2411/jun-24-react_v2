@@ -174,3 +174,13 @@ Card (title, description, subheadingText)
 - json-server --watch --port=3030 db.json
 
 ---
+
+# Vite Project
+
+- npm create vite@latest
+  - React
+  - JavaScript
+- cd react-redux-app
+- npm install
+- npm run dev
+- npm install @reduxjs/toolkit react-redux bootstrap
