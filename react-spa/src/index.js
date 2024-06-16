@@ -5,12 +5,18 @@ import { RouterProvider, createHashRouter } from "react-router-dom";
 import "./index.css";
 
 import CourseDetailsPage, {
+  courseDeleteAction,
   courseDetailLoader,
 } from "./Pages/CourseDetailsPage";
 import CoursesPage, { coursesLoader } from "./Pages/CoursesPage";
 import ErrorPage from "./Pages/ErrorPage";
 import HomePage from "./Pages/HomePage";
 import RootLayoutPage from "./Pages/RootLayoutPage";
+import NewCoursePage, { createCourseAction } from "./Pages/NewCoursePage";
+import CourseEdit, {
+  courseEditAction,
+  courseEditLoader,
+} from "./Pages/CourseEdit";
 
 const router = createHashRouter([
   {
@@ -19,11 +25,11 @@ const router = createHashRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/", // http://localhost:3000
+        index: true, // http://localhost:3000
         element: <HomePage />,
       },
       {
-        path: "/courses",
+        path: "/courses", // http://localhost:3000/#/courses
         element: <CoursesPage />,
         loader: coursesLoader,
       },
@@ -31,6 +37,18 @@ const router = createHashRouter([
         path: "/courses/:courseId",
         element: <CourseDetailsPage />,
         loader: courseDetailLoader,
+        action: courseDeleteAction,
+      },
+      {
+        path: "/courses/new",
+        element: <NewCoursePage />,
+        action: createCourseAction,
+      },
+      {
+        path: "/courses/:courseId/edit",
+        element: <CourseEdit />,
+        loader: courseEditLoader,
+        action: courseEditAction,
       },
     ],
   },

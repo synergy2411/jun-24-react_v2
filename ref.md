@@ -122,9 +122,9 @@ Class based component : mounting, updating, unmounting
 Uncontrolled / controlled elements
 Hooks- useState, useRef, useEffect, useReducer,
 
-- useContext
-- useCallback
-- useMemo
+- useContext: consumes Context API
+- useCallback : memoized value for callback / function
+- useMemo : memoized value for javascript reference type
 - useTransition : Priortise the state update to achieve the concurrency performance in a single function call
 - useDeferredValue : used when there is no access of state
 - useLayoutEffect : executes before the component layout is created
@@ -133,6 +133,8 @@ Hooks- useState, useRef, useEffect, useReducer,
 - useForm (react-hook-form)
 
 # SPA
+
+- npm install react-router-dom
 
 # Why Context API?
 
@@ -166,5 +168,7 @@ Card (title, description, subheadingText)
 
 # React SPA
 
-- Create browserRouter
+- Create BrowserRouter / HashRouter
 - Configure the Components/Pages with Path/Routes
+
+- json-server --watch --port=3030 db.json

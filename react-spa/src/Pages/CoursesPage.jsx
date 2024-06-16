@@ -1,14 +1,21 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import CourseItem from "../Components/CourseItem";
 
 function CoursesPage() {
   const courses = useLoaderData();
 
-  if (!courses) return <p>Loading...</p>;
-
   return (
     <>
       <h1>Courses Page</h1>
+      <div className="row">
+        <div className="col-4 offset-4">
+          <div className="d-grid">
+            <Link to="/courses/new" className="btn btn-dark">
+              Add Course
+            </Link>
+          </div>
+        </div>
+      </div>
       <div className="row">
         {courses.map((course) => (
           <CourseItem course={course} key={course.id} />
