@@ -1,8 +1,10 @@
-import { redirect, useLoaderData } from "react-router-dom";
+import { json, redirect, useRouteLoaderData } from "react-router-dom";
 import CourseDetails from "../Components/CourseDetails";
 
 function CourseDetailsPage() {
-  const course = useLoaderData();
+  // const course = useLoaderData();
+
+  const course = useRouteLoaderData("course-loader");
 
   return <CourseDetails course={course} />;
 }
@@ -14,7 +16,12 @@ export async function courseDetailLoader({ params }) {
   const response = await fetch(`http://localhost:3030/courses/${courseId}`);
 
   if (!response.ok) {
-    throw new Error("Unable to get the details of course for id - ");
+    throw json(
+      {
+        message: "Unable to load course for " + courseId,
+      },
+      { status: 401 }
+    );
   }
 
   return response;
@@ -27,9 +34,16 @@ export async function courseDeleteAction({ request, params }) {
     method: request.method,
   });
 
+  console.log("DELETE ACTION : ", courseId);
+
   if (!response.ok) {
-    throw new Error("Unable to delete course for " + courseId);
+    throw json(
+      {
+        message: "Unable to delete course for " + courseId,
+      },
+      { status: 401 }
+    );
   }
 
-  return redirect("/courses");
+  return redirect("/");
 }

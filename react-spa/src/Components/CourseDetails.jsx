@@ -11,7 +11,6 @@ function CourseDetails({ course }) {
     const proceed = confirm("Are you sure to delete course -" + course.title);
     if (!proceed) return;
     submit({}, { action: `/courses/${course.id}`, method: "DELETE" });
-    navigate("/courses");
   };
 
   return (
@@ -38,10 +37,9 @@ function CourseDetails({ course }) {
                 <div className="col-6">
                   <div className="d-grid">
                     <button
-                      className="btn btn-success"
                       type="button"
+                      className="btn btn-success"
                       onClick={() => {
-                        console.log("Clicked");
                         navigate(`/courses/${course.id}/edit`);
                       }}
                     >

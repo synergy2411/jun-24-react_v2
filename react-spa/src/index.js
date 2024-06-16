@@ -1,22 +1,31 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createHashRouter } from "react-router-dom";
 import "./index.css";
 
-import CourseDetailsPage, {
+// import CourseDetailsPage, {
+//   courseDeleteAction,
+//   courseDetailLoader,
+// } from "./Pages/CourseDetailsPage";
+import CourseEditPage, { courseEditAction } from "./Pages/CourseEditPage";
+// import CoursesPage, { coursesLoader } from "./Pages/CoursesPage";
+import ErrorPage from "./Pages/ErrorPage";
+import HomePage from "./Pages/HomePage";
+import NewCoursePage, { createCourseAction } from "./Pages/NewCoursePage";
+import RootLayoutPage from "./Pages/RootLayoutPage";
+import {
   courseDeleteAction,
   courseDetailLoader,
 } from "./Pages/CourseDetailsPage";
-import CoursesPage, { coursesLoader } from "./Pages/CoursesPage";
-import ErrorPage from "./Pages/ErrorPage";
-import HomePage from "./Pages/HomePage";
-import RootLayoutPage from "./Pages/RootLayoutPage";
-import NewCoursePage, { createCourseAction } from "./Pages/NewCoursePage";
-import CourseEdit, {
-  courseEditAction,
-  courseEditLoader,
-} from "./Pages/CourseEdit";
+
+const CoursesPage = React.lazy(() =>
+  import("./Pages/CoursesPage").then((m) => m)
+);
+
+const CourseDetailsPage = React.lazy(() =>
+  import("./Pages/CourseDetailsPage").then((m) => m)
+);
 
 const router = createHashRouter([
   {
@@ -30,25 +39,40 @@ const router = createHashRouter([
       },
       {
         path: "/courses", // http://localhost:3000/#/courses
-        element: <CoursesPage />,
-        loader: coursesLoader,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <CoursesPage />
+          </Suspense>
+        ),
+        loader: () =>
+          import("./Pages/CoursesPage").then((m) => m.coursesLoader()),
       },
       {
         path: "/courses/:courseId",
-        element: <CourseDetailsPage />,
         loader: courseDetailLoader,
         action: courseDeleteAction,
+        id: "course-loader",
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense fallback={<p>Loading...</p>}>
+                <CourseDetailsPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: "edit",
+            element: <CourseEditPage />,
+            action: courseEditAction,
+          },
+        ],
       },
+
       {
         path: "/courses/new",
         element: <NewCoursePage />,
         action: createCourseAction,
-      },
-      {
-        path: "/courses/:courseId/edit",
-        element: <CourseEdit />,
-        loader: courseEditLoader,
-        action: courseEditAction,
       },
     ],
   },

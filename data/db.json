@@ -1,22 +1,3 @@
 {
-  "courses": [
-    {
-      "title": "Awesome React",
-      "duration": "40",
-      "logo": "https://picsum.photos/500",
-      "id": 3
-    },
-    {
-      "title": "NodeJS",
-      "duration": "60",
-      "logo": "https://picsum.photos/500",
-      "id": 4
-    },
-    {
-      "title": "JavaScript",
-      "duration": "40",
-      "logo": "https://picsum.photos/500",
-      "id": 5
-    }
-  ]
+  "courses": []
 }

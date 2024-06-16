@@ -1,8 +1,9 @@
-import { redirect, useLoaderData } from "react-router-dom";
+import { redirect, useRouteLoaderData } from "react-router-dom";
 import CourseForm from "../Components/CourseForm";
 
-function CourseEdit() {
-  const course = useLoaderData();
+function CourseEditPage() {
+  // const course = useLoaderData();
+  const course = useRouteLoaderData("course-loader");
   return (
     <>
       <h1 className="text-center">Edit Course Here</h1>
@@ -11,18 +12,7 @@ function CourseEdit() {
   );
 }
 
-export default CourseEdit;
-
-export async function courseEditLoader({ params }) {
-  const { courseId } = params;
-  const response = await fetch(`http://localhost:3030/courses/${courseId}`);
-
-  if (!response.ok) {
-    throw new Error("Unable to get the details of course for id - ");
-  }
-
-  return response;
-}
+export default CourseEditPage;
 
 export async function courseEditAction({ params, request }) {
   const { courseId } = params;

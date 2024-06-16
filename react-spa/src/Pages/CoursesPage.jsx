@@ -1,9 +1,10 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, json, useLoaderData } from "react-router-dom";
 import CourseItem from "../Components/CourseItem";
 
 function CoursesPage() {
   const courses = useLoaderData();
 
+  console.log("COOURSES : ", courses);
   return (
     <>
       <h1>Courses Page</h1>
@@ -17,9 +18,10 @@ function CoursesPage() {
         </div>
       </div>
       <div className="row">
-        {courses.map((course) => (
-          <CourseItem course={course} key={course.id} />
-        ))}
+        {courses &&
+          courses.map((course) => (
+            <CourseItem course={course} key={course.id} />
+          ))}
       </div>
     </>
   );
@@ -30,7 +32,12 @@ export default CoursesPage;
 export async function coursesLoader() {
   const response = await fetch("http://localhost:3030/courses");
   if (!response.ok) {
-    throw new Error("Uanble to fetch courses");
+    throw json(
+      {
+        message: "Unable to load course list",
+      },
+      { status: 500 }
+    );
   }
   return response;
 }
