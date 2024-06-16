@@ -184,3 +184,11 @@ Card (title, description, subheadingText)
 - npm install
 - npm run dev
 - npm install @reduxjs/toolkit react-redux bootstrap
+
+- Create Store
+- Register reducer with Store
+- Supply Store to React app
+- Consume the Redux Store
+
+- useSelector() : selects the state available in store
+- useDispatch() : dispatch the action to store
